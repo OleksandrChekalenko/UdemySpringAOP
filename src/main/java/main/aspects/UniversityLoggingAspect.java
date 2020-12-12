@@ -1,5 +1,6 @@
 package main.aspects;
 
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.stereotype.Component;
@@ -28,5 +29,10 @@ public class UniversityLoggingAspect {
     public void afterThrowingGetStudentsLoggingAdvise(Throwable exception) {
         System.out.println("afterThrowingGetStudentsLoggingAdvise: after throwing log getting list of students before getStudents() method" +
                 exception);
+    }
+
+    @After("execution(* getStudents())")
+    public void afterGetStudentsAdvise() {
+        System.out.println("afterGetStudentsAdvise: will always execute");
     }
 }
