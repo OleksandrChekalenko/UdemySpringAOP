@@ -28,4 +28,15 @@ public class LoggingAspect {
     public void afterAllEmptyParameters() {
         System.out.println("afterAllEmptyParameters: -----------");
     }
+
+    @Before("execution(* *(..))")
+    public void beforeEverythingAdvice() {
+        System.out.println("beforeEverythingAdvice: ///////////");
+    }
+
+    @Before("execution(* getBook(main.entitys.Book))")
+    public void beforeBookAdvice() {
+        System.out.println("beforeBookAdvice: book");
+    }
+
 }
