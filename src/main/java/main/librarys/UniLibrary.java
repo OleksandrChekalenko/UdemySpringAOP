@@ -15,7 +15,23 @@ public class UniLibrary extends Library{
         System.out.println("Throw the book from UniLibrary");
     }
 
-    protected void getMagazine() {
+    public void getMagazine() {
         System.out.println("We take a magazine from UniLibrary");
+    }
+
+    public void returnBook(){
+        System.out.println();
+    }
+
+    public void returnMagazine(){
+        System.out.println();
+    }
+
+    public void addBook(){
+        System.out.println();
+    }
+
+    public void addMagazine(){
+        System.out.println();
     }
 }
