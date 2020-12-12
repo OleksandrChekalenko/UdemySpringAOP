@@ -3,11 +3,15 @@ package main.aspects;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
 public class LoggingAspect {
+
+    @Pointcut("execution(* get*())")
+    private void allGetMethods(){}
 
     @Before("execution(public void getBook())")
     public void beforeGetBookAdvice() {
@@ -37,6 +41,11 @@ public class LoggingAspect {
     @Before("execution(* getBook(main.entitys.Book))")
     public void beforeBookAdvice() {
         System.out.println("beforeBookAdvice: book");
+    }
+
+    @After("allGetMethods()")
+    public void afterAllGetMethods() {
+        System.out.println("afterAllGetMethods");
     }
 
 }
