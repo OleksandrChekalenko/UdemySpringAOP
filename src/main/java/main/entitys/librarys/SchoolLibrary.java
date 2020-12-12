@@ -1,4 +1,4 @@
-package main.librarys;
+package main.entitys.librarys;
 
 import main.entitys.Book;
 import org.springframework.stereotype.Component;

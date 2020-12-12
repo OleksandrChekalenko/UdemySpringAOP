@@ -38,7 +38,7 @@ public class LoggingAspect {
         System.out.println("beforeGetBookAdvice: try to take a book");
     }
 
-    @After("execution(void main.librarys.UniLibrary.throwBook())")
+    @After("execution(void main.entitys.librarys.UniLibrary.throwBook())")
     public void afterThrowBookAdvice() {
         System.out.println("afterThrowBookAdvice: Thrown the book");
     }

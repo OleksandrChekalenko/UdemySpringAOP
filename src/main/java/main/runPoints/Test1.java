@@ -1,7 +1,8 @@
-package main;
+package main.runPoints;
 
+import main.config.Config;
 import main.entitys.Book;
-import main.librarys.UniLibrary;
+import main.entitys.librarys.UniLibrary;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class Test1 {

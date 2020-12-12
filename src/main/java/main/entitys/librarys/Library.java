@@ -1,4 +1,4 @@
-package main.librarys;
+package main.entitys.librarys;
 
 public abstract class Library {
 

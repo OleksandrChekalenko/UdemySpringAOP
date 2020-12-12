@@ -14,11 +14,11 @@ public class Pointcuts {
     @Pointcut("execution(* add*(.. ))")
     public void allAddMethods(){}
 
-    @Pointcut("execution(* main.librarys.UniLibrary.get*())")
+    @Pointcut("execution(* main.entitys.librarys.UniLibrary.get*())")
     public void allGetMethodsFromUniLibrary() {
     }
 
-    @Pointcut("execution(* main.librarys.UniLibrary.return*())")
+    @Pointcut("execution(* main.entitys.librarys.UniLibrary.return*())")
     public void allReturnMethodsFromUniLibrary() {
     }
 
@@ -26,9 +26,9 @@ public class Pointcuts {
     public void allGetAndReturnMethodsFromUniLibrary() {
     }
 
-    @Pointcut("execution(* main.librarys.UniLibrary.*(..))")
+    @Pointcut("execution(* main.entitys.librarys.UniLibrary.*(..))")
     public void allUniLibraryMethods(){}
 
-    @Pointcut("execution(public void main.librarys.UniLibrary.returnMagazine())")
+    @Pointcut("execution(public void main.entitys.librarys.UniLibrary.returnMagazine())")
     public void returnMagazinePointcut() {}
 }
