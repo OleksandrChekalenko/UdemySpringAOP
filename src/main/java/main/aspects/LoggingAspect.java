@@ -1,8 +1,10 @@
 package main.aspects;
 
-import org.aspectj.lang.annotation.After;
+import main.entitys.Book;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -11,9 +13,9 @@ import org.springframework.stereotype.Component;
 @Order(10)
 public class LoggingAspect {
 
-    @Before("main.aspects.Pointcuts.allUniLibraryMethods() && !main.aspects.Pointcuts.returnMagazinePointcut()")
-    public void beforeAllMethodsExeptGetMagazineAdvise() {
-        System.out.println("beforeAllMethodsExeptGetMagazineAdvise: Log #10");
+    /*@Before("main.aspects.Pointcuts.allUniLibraryMethods() && !main.aspects.Pointcuts.returnMagazinePointcut()")
+    public void beforeAllMethodsExceptGetMagazineAdvise() {
+        System.out.println("beforeAllMethodsExceptGetMagazineAdvise: Log #10");
     }
 
     @Before("main.aspects.Pointcuts.allGetMethodsFromUniLibrary()")
@@ -59,5 +61,31 @@ public class LoggingAspect {
     @Before("execution(* getBook(main.entitys.Book))")
     public void beforeBookAdvice() {
         System.out.println("beforeBookAdvice: book");
+    }*/
+    @Before("main.aspects.Pointcuts.allAddMethods()")
+    public void beforeAddLoggingAdvise(JoinPoint joinPoint) {
+        MethodSignature signature = (MethodSignature) joinPoint.getSignature();
+        System.out.println("signature() = " + signature);
+        System.out.println("signature.getMethod() = " + signature.getMethod());
+        System.out.println("signature.getReturnType() = " + signature.getReturnType());
+        System.out.println("signature.getName() = " + signature.getName());
+
+        if (signature.getName().equals("addBook")) {
+            Object[] arguments = joinPoint.getArgs();
+            for (Object obj :
+                    arguments) {
+                if (obj instanceof Book) {
+                    Book book = (Book) obj;
+                    System.out.println("Information about book: " +
+                            "\n book name: " + book.getBookName() + "\n book author: " + book.getAuthor() +
+                            "\n year of publication: " + book.getYearOfPublication());
+                } else if (obj instanceof String) {
+                    System.out.println("Person name who adding the book: " + obj);
+                }
+            }
+        }
+
+        System.out.println("beforeAddLoggingAdvise: logging add book");
+        System.out.println("----------------------------------------------");
     }
 }

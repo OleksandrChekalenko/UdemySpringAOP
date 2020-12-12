@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 public class SchoolLibrary extends Library {
 
     public void getBook(Book book) {
-        System.out.println("We take a book from SchoolLibrary" + book.getName());
+        System.out.println("We take a book from SchoolLibrary" + book.getBookName());
     }
 
     public String returnBook() {

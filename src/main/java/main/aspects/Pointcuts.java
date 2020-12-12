@@ -11,6 +11,9 @@ public class Pointcuts {
     @Pointcut("execution(* get*())")
     public void allGetMethods(){}
 
+    @Pointcut("execution(* add*(.. ))")
+    public void allAddMethods(){}
+
     @Pointcut("execution(* main.librarys.UniLibrary.get*())")
     public void allGetMethodsFromUniLibrary() {
     }

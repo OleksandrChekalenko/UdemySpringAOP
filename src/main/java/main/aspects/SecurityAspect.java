@@ -14,4 +14,10 @@ public class SecurityAspect {
     public void beforeGetSecurityAdvise() {
         System.out.println("beforeGetSecurityAdvise: security check for the rights");
     }
+
+    @Before("main.aspects.Pointcuts.allAddMethods()")
+    public void beforeAddSecurityAdvise() {
+        System.out.println("beforeAddSecurityAdvise: security check for the rights");
+        System.out.println("----------------------------------------------");
+    }
 }
