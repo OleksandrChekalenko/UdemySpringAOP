@@ -1,54 +1,35 @@
 package main.aspects;
 
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
-public class LoggingAndSecurityAspect {
+@Order(10)
+public class LoggingAspect {
 
-    @Pointcut("execution(* main.librarys.UniLibrary.get*())")
-    private void allGetMethodsFromUniLibrary() {
-    }
-
-    @Pointcut("execution(* main.librarys.UniLibrary.return*())")
-    private void allReturnMethodsFromUniLibrary() {
-    }
-
-    @Pointcut("allGetMethodsFromUniLibrary() || allReturnMethodsFromUniLibrary()")
-    private void allGetAndReturnMethodsFromUniLibrary() {
-    }
-
-    @Pointcut("execution(* main.librarys.UniLibrary.*(..))")
-    private void allUniLibraryMethods(){}
-
-    @Pointcut("execution(public void main.librarys.UniLibrary.returnMagazine())")
-    private void returnMagazinePointcut() {}
-
-    @Before("allUniLibraryMethods() && !returnMagazinePointcut()")
+    @Before("main.aspects.Pointcuts.allUniLibraryMethods() && !main.aspects.Pointcuts.returnMagazinePointcut()")
     public void beforeAllMethodsExeptGetMagazineAdvise() {
         System.out.println("beforeAllMethodsExeptGetMagazineAdvise: Log #10");
     }
 
-    @Before("allGetMethodsFromUniLibrary()")
+    @Before("main.aspects.Pointcuts.allGetMethodsFromUniLibrary()")
     public void beforeGetLoggingAdvise() {
         System.out.println("beforeGetLoggingAdvise: Log #1");
     }
 
-    @Before("allReturnMethodsFromUniLibrary()")
+    @Before("main.aspects.Pointcuts.allReturnMethodsFromUniLibrary()")
     public void beforeReturnLoggingAdvise() {
         System.out.println("beforeReturnLoggingAdvise: Log #2");
     }
 
-    @Before("allGetAndReturnMethodsFromUniLibrary()")
+    @Before("main.aspects.Pointcuts.allGetAndReturnMethodsFromUniLibrary()")
     public void beforeGetAndReturnLoggingAdvise() {
         System.out.println("beforeReturnLoggingAdvise: Log #3");
     }
-
-    /*@Pointcut("execution(* get*())")
-    private void allGetMethods(){}
 
     @Before("execution(public void getBook())")
     public void beforeGetBookAdvice() {
@@ -79,10 +60,4 @@ public class LoggingAndSecurityAspect {
     public void beforeBookAdvice() {
         System.out.println("beforeBookAdvice: book");
     }
-
-    @After("allGetMethods()")
-    public void afterAllGetMethods() {
-        System.out.println("afterAllGetMethods");
-    }*/
-
 }
