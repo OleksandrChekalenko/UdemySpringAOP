@@ -13,7 +13,13 @@ public class AroundLoggingAspect {
     public Object aroundReturnBookLoggingAdvise(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         System.out.println("aroundReturnBookLoggingAdvise: try to return the book to the library");
 
-        Object targetMethodResult = proceedingJoinPoint.proceed();
+        Object targetMethodResult;
+        try {
+            targetMethodResult = proceedingJoinPoint.proceed();
+        } catch (Exception e) {
+            System.out.println("Exception was catch: " + e.getMessage());
+            throw e;
+        }
 
         System.out.println("aroundReturnBookLoggingAdvise: return book to the library");
         return targetMethodResult;

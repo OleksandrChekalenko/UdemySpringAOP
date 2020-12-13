@@ -13,6 +13,7 @@ public class UniLibrary extends Library {
     }
 
     public String returnBook() {
+        int ex = 10 / 0;
         System.out.println("We get book back to UniLibrary");
         return "AOP Book";
 
