@@ -3,7 +3,7 @@ package main.entitys.librarys;
 import main.entitys.Book;
 import org.springframework.stereotype.Component;
 
-@Component()
+@Component
 public class UniLibrary extends Library {
 
     //    @Override
@@ -12,9 +12,9 @@ public class UniLibrary extends Library {
         System.out.println("----------------------------------------------");
     }
 
-    public void returnBook() {
+    public String returnBook() {
         System.out.println("We get book back to UniLibrary");
-        System.out.println("----------------------------------------------");
+        return "AOP Book";
 
     }
 
